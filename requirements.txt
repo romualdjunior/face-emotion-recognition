@@ -3,5 +3,5 @@ streamlit~=0.87.0
 keras~=2.4.3
 opencv-contrib-python-headless
 tensorflow-cpu==2.4.1
-streamlit_webrtc
+streamlit_webrtc==0.40.0
 protobuf==3.20.*
