@@ -3,8 +3,10 @@ import cv2
 import streamlit as st
 from tensorflow import keras
 from keras.models import model_from_json
-from keras.preprocessing.image import img_to_array
+from keras_preprocessing.image import img_to_array
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+# from streamlit.script_run_context import add_script_run_ctx
+import threading
 
 # load model
 emotion_dict = {0: 'angry', 1: 'happy', 2: 'neutral', 3: 'sad', 4: 'surprise'}
@@ -78,6 +80,11 @@ def main():
     elif choice == "Webcam Face Detection":
         st.header("Webcam Live Feed")
         st.write("Click on start to use webcam and detect your face emotion")
+        # stream = threading.Thread(
+        #     target=webrtc_streamer, args=("example", VideoTransformer,))
+        # st.report_thread.add_report_ctx(stream)
+        # stream.start()
+
         webrtc_streamer(
             key="example", video_transformer_factory=VideoTransformer)
 
